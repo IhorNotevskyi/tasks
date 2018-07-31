@@ -1,0 +1,48 @@
+body {
+    padding-top: 5rem;
+}
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.alert {
+    width: 400px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+nav.navbar {
+    padding: 10px 50px;
+}
+
+nav .not-logged-in {
+    height: 40px;
+}
+
+nav div form {
+    margin-right: 25px;
+}
+
+nav div form input[type="submit"] {
+    margin-left: 3px
+}
+
+nav div ul li:first-child {
+    margin: 8px 25px 0 0;
+}
+
+#sign-in-form {
+    max-width: 400px;
+    margin: 50px auto 0;
+}
+
+#sign-in-form h1 {
+    margin: 20px 0 10px;
+}
+
+#sign-in-form input[type="email"],
+#sign-in-form input[type="password"] {
+    margin-bottom: 10px;
+}
