@@ -15,7 +15,17 @@ class TasksController extends Controller
         }
         $page = !isset($page) ? 0 : $page;
 
-        $this->data['tasks'] = $this->model->getBookListByPage($page);
+        $orderByValues = ['username', 'email', 'is_done'];
+        $sortValues = ['asc', 'desc'];
+        $orderBy = '';
+        $sort = '';
+
+        if (isset($_GET['orderBy']) && isset($_GET['sort']) && in_array($_GET['orderBy'], $orderByValues) && in_array($_GET['sort'], $sortValues)) {
+            $orderBy = (string)strip_tags($_GET['orderBy']);
+            $sort = (string)strtoupper(strip_tags($_GET['sort']));
+        }
+
+        $this->data['tasks'] = $this->model->getBookListByPage($page, $orderBy, $sort);
     }
 
     public function add()

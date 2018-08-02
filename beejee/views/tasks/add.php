@@ -24,6 +24,9 @@
             <input type="file" name="image" id="add_image" style="display: inline-block">
             <p class="help-block" style="font-size: 12px; margin: 20px 0 40px">Пожалуйста, загрузите Ваш файл (jpg, png, gif). Максимальный размер файла - 3Мб. При несоответствии требованиям картинка не будет загружена.</p>
         </div>
-        <input type="submit" class="btn btn-lg btn-success" value="Сохранить задачу" style="margin-bottom: 40px">
+        <input type="submit" class="btn btn-lg btn-success" value="Сохранить задачу">
+        <button id="show-preview" type="button" class="btn btn-lg btn-secondary" style="margin-left: 10px">Предварительный просмотр</button>
     </form>
+    <div id="preview" class="table-responsive text-center" style="margin-top: 50px"></div>
 </div>
+<script src="/js/preview.js"></script>

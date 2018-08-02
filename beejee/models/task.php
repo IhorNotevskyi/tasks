@@ -2,19 +2,30 @@
 
 class Task extends Model
 {
-    public function getBookListByPage($page = 0, $limit = 3)
+    public function getBookListByPage($page = 0, $orderBy, $sort, $limit = 3)
     {
         $page = $this->db->escape($page);
+        $orderBy = $this->db->escape($orderBy);
+        $sort = $this->db->escape($sort);
+
         $start = $page * $limit;
 
-        $sql = "SELECT * FROM tasks 
-                    ORDER BY id DESC
-                    LIMIT {$start}, {$limit}";
+        $sql = "SELECT * FROM tasks ";
+
+        if ($orderBy && $sort) {
+            $sql .= "ORDER BY {$orderBy} {$sort} ";
+        }
+
+        $sql .= "LIMIT {$start}, {$limit}";
 
         $result = $this->db->query($sql);
         $result['count'] = $this->getCountPages($limit);
 
         return $result;
+
+//        "SELECT id FROM table WHERE id > :id AND name = ?"
+//        bind("id", "ID")
+//        bind(2, "NAME")
     }
 
     public function getCountPages($limit = 3)

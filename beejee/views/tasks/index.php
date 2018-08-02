@@ -1,15 +1,39 @@
-<h2 class=text-center" style="margin-bottom: 20px">Список задач</h2>
-<a href="/tasks/add" class="float-right" style="display: inline; margin: 15px 0">
-    <button class="btn btn-lg btn-success" style="padding: 15px 60px">Добавить задачу</button>
-</a>
-<div class="table-responsive text-canter" style="margin-top: 20px">
+<h2 class="text-center" style="margin-bottom: 20px">Список задач</h2>
+<div class="d-flex justify-content-between">
+    <div class="btn-group dropright">
+        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline; margin: 15px 0">
+            <span style="padding: 15px 60px">Сортировать</span>
+        </button>
+        <div class="dropdown-menu">
+            <h3 class="dropdown-header">по имени пользователя</h3>
+            <div class="dropdown-divider"></div>
+            <a href="/tasks?orderBy=username&sort=asc" class="dropdown-item">в алфавитном порядке</a>
+            <a href="/tasks?orderBy=username&sort=desc" class="dropdown-item">в обратном алфавитном порядке</a>
+            <div class="dropdown-divider"></div>
+            <h3 class="dropdown-header">по e-mail</h3>
+            <div class="dropdown-divider"></div>
+            <a href="/tasks?orderBy=email&sort=asc" class="dropdown-item">в алфавитном порядке</a>
+            <a href="/tasks?orderBy=email&sort=desc" class="dropdown-item">в обратном алфавитном порядке</a>
+            <div class="dropdown-divider"></div>
+            <h3 class="dropdown-header">по статусу (выполнено)</h3>
+            <div class="dropdown-divider"></div>
+            <a href="/tasks?orderBy=is_done&sort=asc" class="dropdown-item">сначала невыполненные задачи</a>
+            <a href="/tasks?orderBy=is_done&sort=desc" class="dropdown-item">сначала выполненные задачи</a>
+        </div>
+    </div>
+    <a href="/tasks/add" class="float-right" style="display: inline; margin: 15px 0">
+        <button class="btn btn-lg btn-success" style="padding: 15px 60px">Добавить задачу</button>
+    </a>
+</div>
+
+<div class="table-responsive text-center" style="margin-top: 20px">
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Имя пользователя</th>
                 <th>E-mail</th>
                 <th>Задача</th>
-                <th>Выполнено</th>
+                <th>Статус (выполнено)</th>
                 <th>Фото</th>
                 <?php if ($user && $user->getLogin() && $user->getRole() === 'admin') : ?>
                     <th>Управление</th>
@@ -46,7 +70,7 @@
     <ul class="pagination pagination-lg tasks-pagination justify-content-center">
         <?php if ($_GET['page'] > 1) : ?>
             <li class="page-item">
-                <a class="page-link" href="/tasks?page=<?= $_GET['page'] - 1 ?>">Предыдущая</a>
+                <a class="page-link" href="/tasks?page=<?= $_GET['page'] - 1 ?><?= $_GET['orderBy'] && $_GET['sort'] ? '&orderBy=' . $_GET['orderBy'] . '&sort=' . $_GET['sort'] : '' ?>">Предыдущая</a>
             </li>
         <?php else : ?>
             <li class="page-item disabled">
@@ -61,13 +85,13 @@
                 </li>
             <?php endif; ?>
             <li class="page-item<?= ($j == $_GET['page']) ? ' active' : ''; ?>">
-                <a href="/tasks?page=<?= $j ?>" class="page-link"><?= $j ?></a>
+                <a href="/tasks?page=<?= $j ?><?= $_GET['orderBy'] && $_GET['sort'] ? '&orderBy=' . $_GET['orderBy'] . '&sort=' . $_GET['sort'] : '' ?>" class="page-link"><?= $j ?></a>
             </li>
         <?php endfor; ?>
 
         <?php if ($_GET['page'] < $j - 1) : ?>
             <li class="page-item">
-                <a class="page-link" href="/tasks?page=<?= $_GET['page'] + 1 ?>">Следующая</a>
+                <a class="page-link" href="/tasks?page=<?= $_GET['page'] + 1 ?><?= $_GET['orderBy'] && $_GET['sort'] ? '&orderBy=' . $_GET['orderBy'] . '&sort=' . $_GET['sort'] : '' ?>">Следующая</a>
             </li>
         <?php else : ?>
             <li class="page-item disabled">

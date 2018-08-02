@@ -17,5 +17,8 @@ session_start();
 if (empty($_SESSION['token'])) {
     $_SESSION['token'] = bin2hex(random_bytes(32));
 }
-
-App::run($_SERVER['REQUEST_URI']);
+try {
+    App::run($_SERVER['REQUEST_URI']);
+} catch (\Exception $ex) {
+    echo "Ошибка! Страница не найдена";
+}
