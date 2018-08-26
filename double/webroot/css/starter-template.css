@@ -1,0 +1,106 @@
+body {
+    padding-top: 5rem;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.starter-template {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+main {
+    padding: 0 10%;
+}
+
+.alert {
+    width: 400px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+nav.navbar {
+    padding: 10px 50px 20px;
+}
+
+nav .not-logged-in {
+    height: 40px;
+}
+
+nav div form {
+    margin-right: 25px;
+}
+
+nav div form input[type="submit"] {
+    margin-left: 3px
+}
+
+nav div ul li:first-child {
+    margin: 8px 25px 0 0;
+}
+
+#sign-in-form {
+    max-width: 400px;
+    margin: 50px auto 0;
+}
+
+#sign-in-form h1 {
+    margin: 20px 0 10px;
+}
+
+#sign-in-form input[type="text"],
+#sign-in-form input[type="password"] {
+    margin-bottom: 10px;
+}
+
+.error-container {
+    max-width: 800px;
+    margin: 100px auto 0;
+}
+
+.error-container img {
+    border-radius: 10px;
+    border: 2px solid #000;
+}
+
+.error-container p:nth-child(2) {
+    font-size: 50px;
+    font-weight: 700;
+    color: #ff4141;
+    margin: 50px 0 30px;
+}
+
+.error-container p:nth-child(3),
+.error-container p:nth-child(4) {
+    font-size: 30px;
+    line-height: 50px;
+}
+
+div.d-flex.h4 {
+    margin: 200px 0 30px;
+}
+
+label[for="customer"] {
+    margin-bottom: 15px;
+}
+
+div.d-flex.h4 #search div:nth-child(2) {
+    margin: 45px 0 15px;
+}
+
+div.d-flex.h4 #search #send {
+    width: 100%;
+    margin: 45px 8px 0 0;
+}
+
+div.d-flex.h4 #search #reset {
+    width: 50%;
+    margin: 45px 0 0 8px;
+}
+
+@page {
+    size: auto;
+    margin: 5mm;
+}
