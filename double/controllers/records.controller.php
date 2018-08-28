@@ -34,7 +34,7 @@ class RecordsController extends Controller
 
             $customer = trim(strip_tags($customer));
 
-            if ($this->model->getContactsByCustomer($customer, $checkboxesValues) === [] || !is_numeric($customer)) {
+            if ($this->model->getContactsByCustomer($customer, $checkboxesValues) === []) {
                 echo json_encode(['search_error' => 'Такого клиента не существует']); die;
             } else {
                 $contacts = $this->model->getContactsByCustomer($customer, $checkboxesValues);
